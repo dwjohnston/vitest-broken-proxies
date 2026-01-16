@@ -10,15 +10,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "@types/lodash": "^4.17.23",
-    "jsdom": "^27.4.0",
     "typescript": "^5.9.3",
     "vitest": "4.0.17"
   },
-  "dependencies": {
-    "@js-temporal/polyfill": "^0.5.1",
-    "@vitest/browser-playwright": "^4.0.17",
-    "lodash": "^4.17.21",
-    "vuex": "^4.1.0"
-  }
+  "dependencies": {}
 }
