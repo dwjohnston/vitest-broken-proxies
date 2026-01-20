@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { computed, reactive } from "vue";
 
-/** This is fine */
+/** Sanity test */
 describe("objectContaining", () => {
   it("does not match in v4", () => {
     const result = {
@@ -17,6 +17,7 @@ describe("objectContaining", () => {
   });
 });
 
+/** This is how I discovered the issue */
 describe("vue reactive", () => {
   it("v1", () => {
     const p1 = reactive({
