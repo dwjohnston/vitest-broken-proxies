@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { computed, reactive } from "vue";
+// import { computed, reactive } from "vue";
 
 /** Sanity test */
 describe("objectContaining", () => {
@@ -17,34 +17,38 @@ describe("objectContaining", () => {
   });
 });
 
-/** This is how I discovered the issue */
-describe("vue reactive", () => {
-  it("v1", () => {
-    const p1 = reactive({
-      page: 2,
-      pageSize: 30,
-      foo: "bar",
-    });
+/** This is how I discovered the issue
+ * 
+ * For tidyness, I've removed vue from the reproduction
+ * /
 
-    expect(p1).toEqual(expect.objectContaining({ foo: "bar" }));
-  });
+// describe("vue reactive", () => {
+//   it("v1", () => {
+//     const p1 = reactive({
+//       page: 2,
+//       pageSize: 30,
+//       foo: "bar",
+//     });
 
-  // This passes on v3 but fails on v4
-  it("v2", () => {
-    const p2 = reactive({
-      page: computed(() => 2),
-      pageSize: computed(() => 30),
-      foo: computed(() => "bar"),
-    });
+//     expect(p1).toEqual(expect.objectContaining({ foo: "bar" }));
+//   });
 
-    expect(p2).toEqual(
-      expect.objectContaining({
-        page: 2,
-        foo: "bar",
-      }),
-    );
-  });
-});
+//   // This passes on v3 but fails on v4
+//   it("v2", () => {
+//     const p2 = reactive({
+//       page: computed(() => 2),
+//       pageSize: computed(() => 30),
+//       foo: computed(() => "bar"),
+//     });
+
+//     expect(p2).toEqual(
+//       expect.objectContaining({
+//         page: 2,
+//         foo: "bar",
+//       }),
+//     );
+//   });
+// });
 
 describe("proxy", () => {
   // V3 ✅
@@ -124,7 +128,7 @@ describe("proxy", () => {
   // This test should be passing.
   // V3 ✅ (correct)
   // V4 ❌ (incorrect)
-  it.only("v2 - inverse 2", () => {
+  it("v2 - inverse 2", () => {
     const target = {
       page: 2,
       pageSize: 30,
